@@ -1,47 +1,31 @@
-function a() {
+async function a() {
     return new Promise((resolve, reject) => {
-
-        console.log("a");
-        resolve(5);
-        // setTimeout(() => {
-        //     resolve("test");
-        // }, 1000)
+        resolve("a");
     })
 }
+
 
 function b() {
     return new Promise((resolve, reject) => {
-        console.log("b");
-        resolve(2);
-    })
-}
-
-function c() {
-    return new Promise((resolve, reject) => {
-        console.log("c");
-        reject(1);
+        resolve("b");
     })
 }
 
 
+function all() {
+    return Promise.all([a(), b()]).then(([x, y]) => {
+        // console.log(x, y);
+        return x;
+    }).catch((err) => {
+        console.log("错误信息:", err);
+    })
+}
 
-/*
- *--------------------------Promise.all--------------------------------
- */
-Promise.all([a(), b(), c()])
-    .then(([x, y]) => {
-        console.log(x, y);
-    }).catch(res => {
-        console.log("res", res);
+async function test() {
+    const value = all().then(x => {
+        console.log(x);
     });
+    console.log("value", value);
+}
 
-
-/*
- *--------------------------Promise.race  reject --------------------------------
- */
-Promise.race([a(), b(), c()])
-    .then((success) => {
-        console.log(success);
-    }).catch(res => {
-        console.log("res", res);
-    });
+test();

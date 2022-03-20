@@ -2,14 +2,42 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>模板</title>
+    <style>
+        .act_lottery__desc {
+            padding-right: 0.3rem;
+            transition: transform;
+            animation: move 5s infinite linear;
+        }
+        .act_lottery__name-box {
+            display: flex;
+            width: 120px;
+            overflow: hidden;
+            align-items: center;
+        }
+        @keyframes move {
+            0% {
+                transform: translate3d(0%, 0, 0);
+            }
+            100% {
+                transform: translate3d(-100%, 0, 0);
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <canvas id="tutorial" width="300" height="300"></canvas>
+    <div class="act_lottery__name-box">
+        <p class="act_lottery__desc">
+            我是很长的文案
+        </p>
+        <p class="act_lottery__desc">
+            我是很长的文案
+        </p>
+    </div>
 </body>
 
 </html>
