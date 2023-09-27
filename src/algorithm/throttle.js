@@ -1,3 +1,24 @@
+//简单
+function throttle(func, waitTime) {
+    let lastTime = 0;
+    return function (...args) {
+        const now = Date.now();
+        if (now - lastTime >= waitTime) {
+            lastTime = now;
+            func.apply(this, args);
+        }
+    };
+}
+
+// function scroll() {
+//     console.log("滚动");
+// }
+
+// const throttleScroll = throttle(scroll, 200);
+
+// window.addEventListener("scroll", throttleScroll);
+
+//复杂
 function throttle(func, waitTime, options = {}) {
     let lastExecutionTime = 0;
     let lastArgs;
