@@ -1,22 +1,14 @@
 //简单
-function throttle(func, waitTime) {
-    let lastTime = 0;
-    return function (...args) {
-        const now = Date.now();
-        if (now - lastTime >= waitTime) {
-            lastTime = now;
-            func.apply(this, args);
-        }
-    };
-}
-
-// function scroll() {
-//     console.log("滚动");
+// function throttle(func, waitTime) {
+//     let lastTime = 0;
+//     return function (...args) {
+//         const now = Date.now();
+//         if (now - lastTime >= waitTime) {
+//             lastTime = now;
+//             func.apply(this, args);
+//         }
+//     };
 // }
-
-// const throttleScroll = throttle(scroll, 200);
-
-// window.addEventListener("scroll", throttleScroll);
 
 //复杂
 function throttle(func, waitTime, options = {}) {
@@ -56,10 +48,16 @@ function throttle(func, waitTime, options = {}) {
     return throttled;
 }
 
-const scroll = function () {
-    console.log("滚动");
-};
+//请求函数
+function requset(val) {
+    console.log("request: ", val);
+}
 
-const throttleScroll = throttle(scroll, 2000);
+let inputEl = document.getElementById("input");
 
-window.addEventListener("scroll", throttleScroll);
+let throttleInput = throttle(requset, 1000);
+
+inputEl.addEventListener("keyup", function (e) {
+    throttleInput(e.target.value);
+    // throttleInput(e.target.value);
+});
